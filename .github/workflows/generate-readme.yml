@@ -11,10 +11,11 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      # Step 1: Checkout the repo
       - uses: actions/checkout@v4
 
-      # Step 2: Run your reusable action from the other repo
-      - uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.0
+      - name: Run reusable action
+        uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.0
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+        secrets:
+          GITHUB_TOKEN: ${{ secrets.PAT_FOR_ACTIONS }}
