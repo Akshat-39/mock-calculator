@@ -15,6 +15,6 @@ jobs:
       - uses: actions/checkout@v4
 
       # Step 2: Run your reusable action from the other repo
-      - uses: Akshat-39/ReadmeGenerator/.github/actions/generate-readme@v1.1.0
+      - uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.0
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
