@@ -17,5 +17,3 @@ jobs:
         uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.0
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-        secrets:
-          GITHUB_TOKEN: ${{ secrets.PAT_FOR_ACTIONS }}
