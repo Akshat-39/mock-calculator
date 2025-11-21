@@ -13,11 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install action dependencies
-        run: |
-          cd .github/actions/generate-readme
-          npm install
-
       - name: Run reusable action
         uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.3
         with:
