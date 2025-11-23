@@ -1,3 +1,4 @@
+```markdown
 # Mock Calculator
 
 ![Vite + React](https://img.shields.io/badge/vite-^7.2.2-blueviolet?style=flat&logo=vite)
@@ -150,3 +151,4 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 ## License
 
 This project is open-source and available under an unspecified license. Please contact the repository owner for licensing information.
+```
