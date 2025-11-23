@@ -55,10 +55,13 @@ function App() {
         console.log("adding")
         return first + second;
       case '-':
+        console.log("minus")
         return first - second;
       case '×':
+        console.log("multiply")
         return first * second;
       case '÷':
+        console.log("divide")
         return second === 0 ? 'Error' : first / second;
       default:
         return second;
