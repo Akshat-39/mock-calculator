@@ -52,6 +52,7 @@ function App() {
   const calculate = (first, second, operator) => {
     switch (operator) {
       case '+':
+        console.log("adding")
         return first + second;
       case '-':
         return first - second;
