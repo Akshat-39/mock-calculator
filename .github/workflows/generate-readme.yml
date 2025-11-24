@@ -1,6 +1,11 @@
 name: Generate README
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to compare with main"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -10,20 +15,27 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ Checkout the current branch
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history is needed for git diff
 
-      - name: Run README Generator (Reusable Action)
-        uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.4
+      # 2️⃣ Run README Generator (Reusable Action)
+      - name: Run README Generator
+        uses: Akshat-39/ReadMe-Generator/.github/actions/generate-readme@v1.1.5
         with:
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          branch: ${{ github.ref_name }} # automatically pass the current branch
 
+      # 3️⃣ Commit README changes if any
       - name: Commit README changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "Auto-generate/update README" || echo "No changes to commit"
+          git diff --cached --quiet || git commit -m "Auto-generate/update README"
 
+      # 4️⃣ Create Pull Request targeting main
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
@@ -32,5 +44,5 @@ jobs:
           title: "Auto-generate/update README"
           body: "This PR updates the README.md file using the automated action."
           branch: auto/readme-update-${{ github.run_id }}
-          base: ${{ github.event.repository.default_branch }}
+          base: main # always target main
           delete-branch: true
