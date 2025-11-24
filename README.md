@@ -140,6 +140,8 @@ mock-calculator/
 
 Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request.
 
+**Note on README.md:** This `README.md` is automatically generated and updated via a GitHub Actions workflow. If you wish to suggest changes to the README, please open an issue or propose changes to the workflow/template responsible for its generation, rather than directly editing the `README.md` file itself.
+
 1.  Fork the repository.
 2.  Create a new branch (`git checkout -b feature/your-feature-name`).
 3.  Make your changes.
