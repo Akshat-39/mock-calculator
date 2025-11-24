@@ -132,7 +132,7 @@ mock-calculator/
 ├── eslint.config.js         # ESLint configuration
 ├── index.html               # Main HTML file
 ├── package-lock.json        # Records exact dependency versions
-├── package.json             # Project metadata and dependencies
+├── package.json               # Project metadata and dependencies
 └── vite.config.js           # Vite configuration
 ```
 
