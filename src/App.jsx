@@ -32,6 +32,78 @@ function App() {
     setWaitingForOperand(false);
   };
 
+  // Helper for factorial
+  const factorial = (n) => {
+    if (n < 0) return 'Error';
+    if (n === 0 || n === 1) return 1;
+    let res = 1;
+    for (let i = 2; i <= n; i++) res *= i;
+    return res;
+  };
+
+  // Helper for nth root
+  const nthRoot = (x, n) => {
+    if (n === 0) return 'Error';
+    if (x < 0 && n % 2 === 0) return 'Error';
+    return Math.pow(x, 1 / n);
+  };
+
+  // Handle scientific functions
+  const handleFunction = (func) => {
+    let value = parseFloat(display);
+    let result;
+    switch (func) {
+      case 'sin':
+        result = Math.sin(value);
+        break;
+      case 'cos':
+        result = Math.cos(value);
+        break;
+      case 'tan':
+        result = Math.tan(value);
+        break;
+      case 'x2':
+        result = Math.pow(value, 2);
+        break;
+      case 'sqrt':
+        result = value < 0 ? 'Error' : Math.sqrt(value);
+        break;
+      case 'fact':
+        result = factorial(value);
+        break;
+      case 'log':
+        result = value <= 0 ? 'Error' : Math.log10(value);
+        break;
+      case 'ln':
+        result = value <= 0 ? 'Error' : Math.log(value);
+        break;
+      case 'pi':
+        result = Math.PI;
+        break;
+      case 'e':
+        result = Math.E;
+        break;
+      default:
+        result = value;
+    }
+    setDisplay(String(result));
+    setWaitingForOperand(true);
+  };
+
+  // For x^y and y√x, we use performOperation with special operators
+  const performSpecialOperation = (specialOp) => {
+    const inputValue = parseFloat(display);
+    if (specialOp === 'x^y') {
+      setFirstOperand(inputValue);
+      setOperator('^');
+      setWaitingForOperand(true);
+    } else if (specialOp === 'yroot') {
+      setFirstOperand(inputValue);
+      setOperator('root');
+      setWaitingForOperand(true);
+    }
+  };
+
   const performOperation = (nextOperator) => {
     const inputValue = parseFloat(display);
     if (operator && waitingForOperand) {
@@ -59,6 +131,10 @@ function App() {
         return first * second;
       case '÷':
         return second === 0 ? 'Error' : first / second;
+      case '^':
+        return Math.pow(first, second);
+      case 'root':
+        return nthRoot(first, second);
       default:
         return second;
     }
@@ -79,6 +155,21 @@ function App() {
       <div className="calculator">
         <div className="calculator-display">{display}</div>
         <div className="calculator-keypad">
+          {/* Scientific row */}
+          <button className="key" onClick={() => handleFunction('sin')}>sin</button>
+          <button className="key" onClick={() => handleFunction('cos')}>cos</button>
+          <button className="key" onClick={() => handleFunction('tan')}>tan</button>
+          <button className="key" onClick={() => handleFunction('pi')}>π</button>
+          <button className="key" onClick={() => handleFunction('e')}>e</button>
+          <button className="key" onClick={() => handleFunction('x2')}>x²</button>
+          <button className="key" onClick={() => performSpecialOperation('x^y')}>xʸ</button>
+          <button className="key" onClick={() => handleFunction('sqrt')}>√</button>
+          <button className="key" onClick={() => performSpecialOperation('yroot')}>ʸ√x</button>
+          <button className="key" onClick={() => handleFunction('fact')}>n!</button>
+          <button className="key" onClick={() => handleFunction('log')}>log</button>
+          <button className="key" onClick={() => handleFunction('ln')}>ln</button>
+
+          {/* Standard row */}
           <button className="key key-ac" onClick={clearAll}>AC</button>
           <button className="key key-op" onClick={() => performOperation('÷')}>÷</button>
           <button className="key key-op" onClick={() => performOperation('×')}>×</button>
