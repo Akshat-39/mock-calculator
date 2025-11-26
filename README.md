@@ -4,7 +4,7 @@
 ![React](https://img.shields.io/badge/react-^19.2.0-blue?style=flat&logo=react)
 ![ESLint](https://img.shields.io/badge/eslint-^9.39.1-4B32C3?style=flat&logo=eslint)
 
-A clean and functional web-based calculator application built with React and Vite. This project serves as a practical example of building a responsive user interface with basic arithmetic capabilities.
+A clean and functional web-based calculator application built with React and Vite, offering both basic arithmetic and advanced scientific functionalities within a responsive user interface.
 
 ## Table of Contents
 
@@ -24,6 +24,14 @@ A clean and functional web-based calculator application built with React and Vit
 *   **Basic Arithmetic Operations**: Perform addition, subtraction, multiplication, and division.
 *   **Decimal Support**: Input and calculate with decimal numbers.
 *   **Clear Functionality**: `AC` button to clear the current display and reset the calculator state.
+*   **Scientific Functions**:
+    *   **Trigonometry**: Sine (`sin`), Cosine (`cos`), Tangent (`tan`).
+    *   **Logarithms**: Common logarithm (`log`), Natural logarithm (`ln`).
+    *   **Constants**: Pi (`π`), Euler's number (`e`).
+*   **Advanced Operations**:
+    *   **Powers**: Square (`x²`), Exponentiation (`xʸ`).
+    *   **Roots**: Square Root (`√`), Nth Root (`ʸ√x`).
+    *   **Factorial**: Calculate the factorial of a number (`n!`).
 *   **Responsive Design**: A user-friendly interface that adapts to different screen sizes.
 
 ## Tech Stack
