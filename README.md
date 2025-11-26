@@ -16,6 +16,7 @@ A clean and functional web-based calculator application built with React and Vit
 -   [Usage](#usage)
 -   [Development Scripts](#development-scripts)
 -   [Project Structure](#project-structure)
+-   [CI/CD & Automation](#ci/cd--automation)
 -   [Contributing](#contributing)
 -   [License](#license)
 
@@ -135,6 +136,12 @@ mock-calculator/
 ├── package.json             # Project metadata and dependencies
 └── vite.config.js           # Vite configuration
 ```
+
+## CI/CD & Automation
+
+This project leverages GitHub Actions for automation, including an automated workflow to keep the `README.md` file up-to-date.
+
+*   **Automated README Generation**: A GitHub Actions workflow (`.github/workflows/generate-readme.yml`) is configured to automatically generate or update the `README.md` based on repository changes. This workflow uses a custom action to ensure the documentation is always current and reflects the project's latest state. It can be triggered manually and will create a pull request with any README updates.
 
 ## Contributing
 
