@@ -44,5 +44,5 @@ jobs:
           title: "Auto-generate/update README"
           body: "This PR updates the README.md file using the automated action."
           branch: auto/readme-update-${{ github.run_id }}
-          base: main # always target main
+          base: ${{ github.event.inputs.branch || github.ref_name }}
           delete-branch: true
